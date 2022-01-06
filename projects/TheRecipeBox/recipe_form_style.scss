@@ -1,0 +1,116 @@
+$darkerblue: rgb(131, 188, 207);
+$mediumblue: rgb(115, 165, 182);
+$lighterblue: rgb(148, 199, 216);
+
+form {
+    background-color: rgba(255,255,255,1);
+    border-radius: 10px;
+    display: grid;
+    //grid-template-columns: 1fr 4fr;
+    gap: 15px;
+    //flex-shrink: 3;
+    font-size: 25px;
+    margin: 30px;
+    padding: 20px;
+    overflow: scroll;
+    //border: 2px solid black;
+    //width: 600px;
+
+    input[type="text"], input[type="number"] {
+        border: 2px solid $lighterblue;
+    }
+
+    input[type="file"] {
+        button{
+            background-color: white;
+        }
+    }
+
+    button {
+        font-size: 1.25em;
+        justify-self: center;
+        background-color: $lighterblue;
+        border: 3px solid transparent;
+        border-radius: 5px;
+        color: white;
+        margin-top: 15px;
+        padding: 3px 8px;
+        transition: all .5s;
+        &:hover {
+            background-color: white;
+            border-color: $lighterblue;
+            color: $lighterblue;
+        }
+    }
+
+    label {
+        color: $mediumblue;
+        text-align: right;
+        margin-right: -8px;
+        width: auto;
+        white-space: nowrap;
+    }
+
+    .ingRow {
+        display: grid;
+        grid-template-columns: 20% 30% 50%;
+        height: 27px;
+        gap: 5px;
+        max-width: calc(100% - 10px);
+    }
+
+    .addRow {
+        display: grid;
+        button {
+            justify-self: right;
+            font-size: .75em;
+            margin-top: -5px;
+        }
+    }
+    .instRow {
+        display: grid;
+        height: 27px;
+    }
+    .buttonDiv {
+        justify-self: center;
+        grid-column-start: span 2;
+    }
+    .image-file {
+        margin-left: 10px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0 auto;
+        padding: 0 auto;
+        padding-top: 15px;
+        background-color: rgba(224, 255, 255, 0.65);
+        min-width: 85%;
+        .ingRow {
+            max-width: 95%;
+        }
+
+        .addRow {
+            margin-top: -10px;
+        }
+        input, .instructionsTxt {
+            width: 95%;
+            height: 25px;
+        }
+        .instDiv {
+            width: 100%;
+        }
+        .buttonDiv {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            button {
+                margin-bottom: 5px;
+            }
+        }
+    }
+}

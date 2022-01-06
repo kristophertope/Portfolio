@@ -1,0 +1,409 @@
+body {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: lightblue;
+  background-image: url("images/arabesque.png");
+  color: #94c7d8;
+}
+
+header {
+  background-color: #94c7d8;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+header #logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 70px;
+}
+
+header #logo img {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+}
+
+header #logo h1 {
+  color: white;
+  font-size: 3em;
+}
+
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: white;
+  min-height: 55px;
+}
+
+nav a {
+  border-radius: 10px;
+  color: #73a5b6;
+  text-decoration: none;
+  font-size: larger;
+  font-weight: 700;
+  text-align: center;
+  width: 25%;
+  height: 100%;
+  padding: 4px;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+nav a:hover {
+  background-color: #73a5b6;
+  color: white;
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cardCycleButton {
+  color: #94c7d8;
+  min-width: 35px;
+  max-width: 35px;
+  height: 200px;
+  background-color: white;
+  border: 5px solid #94c7d8;
+  font-size: xx-large;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all .25s;
+  transition: all .25s;
+}
+
+.cardCycleButton:first-of-type {
+  margin-right: -5px;
+  border-radius: 10px 0 0 10px;
+  border-right-color: transparent;
+  z-index: 1;
+}
+
+.cardCycleButton:last-of-type {
+  margin-left: -5px;
+  border-radius: 0 10px 10px 0;
+  border-left-color: transparent;
+  z-index: 1;
+}
+
+.cardCycleButton .hoverText {
+  display: none;
+}
+
+.cardCycleButton:hover .hoverText {
+  display: inline;
+  font-size: small;
+  vertical-align: middle;
+  font-weight: 800;
+  text-orientation: upright;
+  -webkit-writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+          writing-mode: vertical-lr;
+}
+
+.cardCycleButton:hover .defaultText {
+  display: none;
+}
+
+#recipeBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 70vh;
+  max-width: 55%;
+}
+
+.nameDiv {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: nameDiv;
+}
+
+.diffDiv {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: diffDiv;
+}
+
+.servDiv {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: servDiv;
+}
+
+.prepDiv {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  grid-area: prepDiv;
+}
+
+.cookDiv {
+  -ms-grid-row: 5;
+  -ms-grid-column: 1;
+  grid-area: cookDiv;
+}
+
+.photoDiv {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 5;
+  -ms-grid-column: 2;
+  grid-area: photoDiv;
+}
+
+.sizeDiv {
+  -ms-grid-row: 6;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: sizeDiv;
+}
+
+.ingredientsButtonDiv {
+  -ms-grid-row: 7;
+  -ms-grid-column: 1;
+  grid-area: ingredientsButtonDiv;
+}
+
+.instructionsButtonDiv {
+  -ms-grid-row: 7;
+  -ms-grid-column: 2;
+  grid-area: instructionsButtonDiv;
+}
+
+.ingredientsDiv {
+  -ms-grid-row: 8;
+  -ms-grid-column: 1;
+  grid-area: ingredientsDiv;
+}
+
+.instructionsDiv {
+  -ms-grid-row: 8;
+  -ms-grid-column: 2;
+  grid-area: instructionsDiv;
+}
+
+.mobileFooter {
+  grid-area: mobileFooter;
+}
+
+.card {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr);
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas: 'nameDiv photoDiv' 'diffDiv photoDiv' 'servDiv photoDiv' 'prepDiv photoDiv' 'cookDiv photoDiv' 'sizeDiv sizeDiv' 'ingredientsButtonDiv instructionsButtonDiv' 'ingredientsDiv instructionsDiv';
+  background-color: white;
+  border: 5px solid #94c7d8;
+  border-radius: 10px;
+  margin-top: 25px;
+  padding: 5px;
+  padding-bottom: 15px;
+  min-width: 700px;
+  max-width: 3000px;
+}
+
+.card button {
+  font-size: 1.5em;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  background-color: #94c7d8;
+  border: 3px solid transparent;
+  border-radius: 5px;
+  color: white;
+  margin-top: 15px;
+  padding: 3px 8px;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.card button:hover {
+  background-color: white;
+  border-color: #94c7d8;
+  color: #94c7d8;
+}
+
+.card .stats {
+  margin-left: 45px;
+  color: #73a5b6;
+}
+
+.card .ingredientsDiv, .card .instructionsDiv {
+  display: none;
+}
+
+.card .nameDiv {
+  text-align: center;
+}
+
+.card .photoDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.card .photoDiv img {
+  border: 5px solid #94c7d8;
+  border-radius: 15px;
+  margin: 8px;
+  width: 300px;
+  opacity: 0.75;
+}
+
+.card .sizeSpan button {
+  font-size: 1em;
+  margin: 4px;
+  margin-left: 10px;
+  width: 44px;
+}
+
+.card .sizeDiv {
+  display: none;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 10px;
+}
+
+.card .sizeDiv button {
+  font-size: 1em;
+  margin: 5px;
+}
+
+.card .ingredientsButtonDiv, .card .instructionsButtonDiv {
+  display: -ms-grid;
+  display: grid;
+}
+
+.card .ingredientsDiv {
+  margin-left: 20px;
+}
+
+.card .ingredientsDiv, .card .instructionsDiv {
+  color: #73a5b6;
+}
+
+.mobileFooter {
+  display: none;
+}
+
+@media only screen and (max-width: 800px) {
+  header #logo {
+    height: 50px;
+  }
+  header #logo img {
+    width: 25px;
+    height: 25px;
+    margin: 5px;
+  }
+  header #logo h1 {
+    font-size: 2em;
+  }
+  nav {
+    min-height: 40px;
+  }
+  nav a {
+    width: 45%;
+  }
+  #recipeBox {
+    min-width: 100%;
+  }
+  #recipeBox .cardCycleButton {
+    display: none;
+  }
+  #recipeBox .card {
+        grid-template-areas: 'nameDiv nameDiv' 'photoDiv photoDiv' 'diffDiv servDiv' 'prepDiv cookDiv' 'sizeDiv sizeDiv' 'ingredientsButtonDiv ingredientsButtonDiv' 'ingredientsDiv ingredientsDiv' 'instructionsButtonDiv instructionsButtonDiv' 'instructionsDiv instructionsDiv';
+    margin: 0 auto;
+    min-width: 95%;
+    border: none;
+    border-radius: 0;
+    border-top: 5px solid #94c7d8;
+  }
+  #recipeBox .card .photoDiv img {
+    border: 5px solid #94c7d8;
+    border-width: 5px 0 5px 0;
+    border-radius: 0;
+    margin: 8px;
+    width: 103%;
+    opacity: 1;
+  }
+  #recipeBox .card .sizeSpan {
+    display: none;
+  }
+  #recipeBox .card .sizeDiv {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    margin-top: 10px;
+  }
+  #recipeBox .card .sizeDiv button {
+    font-size: 1em;
+    margin: 5px;
+  }
+  .mobileFooter {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
+  .mobileFooter button {
+    background-color: #94c7d8;
+    color: white;
+    border-color: transparent;
+    padding: 10px 30px;
+    width: 50%;
+  }
+}

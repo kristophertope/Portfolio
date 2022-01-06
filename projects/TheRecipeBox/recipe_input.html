@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Input</title>
+    <link rel="stylesheet" type="text/css" href="recipe_style.css">
+	<link rel="stylesheet" type="text/css" href="recipe_style.scss">
+    <link rel="stylesheet" type="text/css" href="recipe_form_style.css">
+	<link rel="stylesheet" type="text/css" href="recipe_form_style.scss">
+    <script src="recipes.js"></script>
+    
+    <script>
+
+        let userRecipeArr = [];
+
+        function getUserRecipes() {
+            if (localStorage.getItem('userRecipes') != null) {
+                userRecipeArr = JSON.parse(localStorage.getItem('userRecipes'));
+            }
+        }
+
+        function saveUserRecipes() {
+            localStorage.setItem('userRecipes', JSON.stringify(userRecipeArr));
+        }
+
+        function removeNonAlphanumerics(str) {
+            return str.replace(/[^\w\s]/gi, '');
+        }
+
+        function checkRequiredFields(arr) {
+            for (i of arr) {
+                if (i == '') return false;
+            }
+            return true;
+        }
+
+        function getFieldData() {
+            event.preventDefault(); //stop reload
+            let nameIn = removeNonAlphanumerics(document.querySelector(".nameTxt").value);
+            let imageIn = document.querySelector(".image-file").value;
+            let servingsIn = parseInt(removeNonAlphanumerics(document.querySelector(".servTxt").value));
+            let prepTimeIn = removeNonAlphanumerics(document.querySelector(".prepTxt").value);
+            let cookTimeIn = removeNonAlphanumerics(document.querySelector(".cookTxt").value);
+            let difficultyIn = removeNonAlphanumerics(document.querySelector(".diffTxt").value);
+            let ingredientQuantitiesIn = [];
+            let ingredientUnitsIn = [];
+            let ingredientNamesIn = [];
+            let instructionsArrIn = [];
+
+            //get filename from path
+            imageIn = imageIn.replace(/^.*[\\\/]/, ''); 
+
+            //build ingredient quantities array
+            let ingredientQuantitiesNodeList = Array.from(document.querySelectorAll(".ingQuantityNum"));
+            for (let i of ingredientQuantitiesNodeList) {
+                ingredientQuantitiesIn.push(parseInt(removeNonAlphanumerics(i.value)));
+            }
+
+            //build ingredient units array
+            let ingredientUnitsNodeList = Array.from(document.querySelectorAll(".ingUnitTxt"));
+            for (let i of ingredientUnitsNodeList) {
+                ingredientUnitsIn.push(removeNonAlphanumerics(i.value));
+            }
+
+            //build ingredient names array
+            let ingredientNamesNodeList = Array.from(document.querySelectorAll(".ingNameTxt"));
+            for (let i of ingredientNamesNodeList) {
+                ingredientNamesIn.push(removeNonAlphanumerics(i.value));
+            }
+
+            //build instructions array
+            let instructionsNodeList = Array.from(document.querySelectorAll(".instructionsTxt"));
+            for (let i of instructionsNodeList) {
+                instructionsArrIn.push(removeNonAlphanumerics(i.value));
+            }
+
+            let requiredFields = [nameIn, servingsIn, ingredientQuantitiesIn, ingredientUnitsIn, ingredientNamesIn, instructionsArrIn];
+
+            if (checkRequiredFields(requiredFields)){
+                console.log("GOOD");
+                makeJSobject(nameIn, imageIn, servingsIn, prepTimeIn, cookTimeIn, cookTimeIn, difficultyIn, ingredientQuantitiesIn, ingredientUnitsIn, ingredientNamesIn, instructionsArrIn);
+            }
+
+            else alert("Please complete all required fields (*)")
+        }
+
+        function makeJSobject(nameIn, imageIn, servingsIn, prepTimeIn, cookTimeIn, cookTimeIn, difficultyIn, ingredientQuantitiesIn, ingredientUnitsIn, ingredientNamesIn, instructionsArrIn) {
+
+            let userRecipe = {
+                name : nameIn,
+                image : imageIn,
+                servings : servingsIn,
+                prepTime : prepTimeIn,
+                cookTime : cookTimeIn,
+                difficulty : difficultyIn,
+                ingredientQuantities : ingredientQuantitiesIn,
+                ingredientUnits : ingredientUnitsIn,
+                ingredientNames : ingredientNamesIn,
+                instructions : instructionsArrIn
+            }
+
+            userRecipeArr.push(userRecipe);
+            saveUserRecipes();
+            clearForm();
+        }
+
+        function addIngredient() {
+            event.preventDefault(); //stop reload
+
+            let newRow = document.createElement('div');
+            newRow.classList.add("ingRow");
+            
+            let quantity = document.createElement('input');
+            quantity.classList.add("ingQuantityNum");
+            quantity.type = "number";
+            quantity.attributes
+            newRow.appendChild(quantity);
+
+            let unit = document.createElement('input');
+            unit.type = "text";
+            unit.classList.add("ingUnitTxt");
+            newRow.appendChild(unit);
+
+            let name = document.createElement('input');
+            name.type = "text";
+            name.classList.add("ingNameTxt");
+            newRow.appendChild(name);
+
+            document.querySelector('.ingDiv').appendChild(newRow);
+        }
+        
+        function addInstruction() {
+            event.preventDefault(); //stop reload
+            let newRow = document.createElement('div');
+            newRow.classList.add("instRow");
+            
+            let instruction = document.createElement('input');
+            instruction.type = "text";
+            instruction.classList.add("instructionsTxt");
+            newRow.appendChild(instruction);
+
+            document.querySelector('.instDiv').appendChild(newRow);
+
+        }
+
+        function clearForm() {
+            window.location.reload();
+        }
+
+    </script>
+
+</head>
+<body onload="getUserRecipes();">
+
+    <header>
+        <div id="logo">
+            <img src="images/box_icon.png">
+            <h1>The Recipe Box</h1>
+        </div>
+    </header>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="recipe_input.html">Add Recipe</a>
+    </nav>
+
+    <main>
+
+        <form>
+            
+            <label class="nameLbl" for="nameTxt">*Recipe Name:</label>
+            <input class="nameTxt" type="text"></input>
+
+            <label class="diffLbl" for="diffTxt">Difficulty:</label>
+            <input class="diffTxt" type="text"></input>
+
+            <label class="servLbl" for="servTxt">*Servings:</label>
+            <input class="servTxt" type="text"></input>
+
+            <label class="prepLbl" for="prepTxt">Prep Time:</label>
+            <input class="prepTxt" type="text"></input>
+
+            <label class="cookLbl" for="cookTxt">Cook Time:</label>
+            <input class="cookTxt" type="text"></input>
+            
+            <label class="ingredientsLbl" for="ingDiv">*Ingredients:</label>
+            <div class="ingDiv">
+                <div class="ingRow">
+                    <input class="ingQuantityNum" type="number"></input>
+                    <input class="ingUnitTxt" type="text"></input>
+                    <input class="ingNameTxt" type="text"></input>
+                </div>
+            </div>
+            <div id="endIng"></div>
+            <div class="addRow"><button onclick="addIngredient()">+row</button></div> 
+
+            <label class="instructionsLbl" for="instDiv">*Instructions:</label>
+            <div class="instDiv">
+                <div class="instRow">
+                    <input class="instructionsTxt" type="text"></input>
+                </div>
+            </div>
+            <div></div>
+            <div class="addRow"><button onclick="addInstruction()">+row</button></div> 
+
+            <label class="imageLbl" for="image-file">Image:</label>
+            <input class="image-file" type="file" />
+
+            <div class="buttonDiv">
+                <button onclick="getFieldData()" class="addRecipeBtn">add recipe</button>
+                <button onclick="clearForm()">clear</button>
+            </div>
+                
+        </form>
+
+    </main>
+</body>
+</html>

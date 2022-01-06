@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Home</title>
+    <link rel="stylesheet" type="text/css" href="recipe_style.css">
+	<link rel="stylesheet" type="text/css" href="recipe_style.scss">
+    <script src="recipes.js"></script>
+    <script>
+
+        let cardIndex;
+        let multiplier;
+        let allRecipes;
+
+        function getUserRecipes() {
+            userRecipes = JSON.parse(localStorage.getItem('userRecipes'));
+            allRecipes = siteRecipes.concat(userRecipes);
+        }
+
+        function getCardIndex() {
+            if (localStorage.getItem('cardIndex') != null) {
+                cardIndex = JSON.parse(localStorage.getItem('cardIndex'));
+            }
+            else cardIndex = 0;
+        }
+
+        function saveCardIndex() {
+            localStorage.setItem('cardIndex', JSON.stringify(cardIndex));
+        }
+
+        function displayCard() {
+            let recipe = allRecipes[cardIndex];
+            
+            ingredientsList = '';
+            for (i in recipe.ingredientNames) {
+                ingredientsList += `${recipe.ingredientQuantities[i] * multiplier} ${recipe.ingredientUnits[i]} ${recipe.ingredientNames[i]} <br>`;
+            }
+
+            instructionsList = '';
+            for (i in recipe.instructions) {
+                instructionsList += `${parseInt(i) + 1}) ${recipe.instructions[i]} <br>`;
+            }
+
+            if (recipe.image === '' || recipe.image === null) {
+                recipe.image = "image-not-available.jpg";
+            }
+            
+
+            card =  `
+                    <div class="card">
+                        <div class="nameDiv"><h1>${recipe.name}</h1></div>
+                        <div class="photoDiv"><img src="images/${recipe.image}"></div>
+                        <div class="diffDiv stats"><h3>Difficulty: ${recipe.difficulty} / 5</h3></div>
+                        <div class="servDiv stats">
+                            <h3>Servings: ${recipe.servings * multiplier}
+                                <span class="sizeSpan">
+                                    <button onclick="setMultiplier(.5)">${recipe.servings * .5}</button>
+                                    <button onclick="setMultiplier(1)">${recipe.servings * 1}</button>
+                                    <button onclick="setMultiplier(2)">${recipe.servings * 2}</button>
+                                </span>
+                            </h3>
+                        </div>
+                        <div class="prepDiv stats"><h3>Prep Time: ${recipe.prepTime}</h3></div>
+                        <div class="cookDiv stats"><h3>Cook Time: ${recipe.cookTime}</h3></div>
+                        
+                        <div class="sizeDiv">
+                            <button onclick="setMultiplier(.5)">half quantity (${recipe.servings * .5})</button>
+                            <button onclick="setMultiplier(1)">full quantity (${recipe.servings * 1})</button>
+                            <button onclick="setMultiplier(2)">double quantity (${recipe.servings * 2})</button>
+                        </div>
+
+                        <div class="ingredientsButtonDiv">
+                            <button onclick='toggleList(".ingredientsDiv", "#ingredientsButtonSpan")'><span id="ingredientsButtonSpan">Show</span> Ingredients</button>
+                        </div>
+
+                        <div class="ingredientsDiv">
+                            <h4>${ingredientsList}</h4>
+                        </div>
+                        
+                        <div class="instructionsButtonDiv">
+                            <button onclick='toggleList(".instructionsDiv", "#instructionsButtonSpan")'><span id="instructionsButtonSpan">Show</span> Instructions</button>
+                        </div>
+
+                        <div class="instructionsDiv">
+                            <h4>${instructionsList}</h4>
+                        </div>
+                    </div>
+                    `;
+
+            document.querySelector("#cardsDiv").innerHTML = card;
+
+        }
+
+        function setMultiplier(num) {
+            multiplier = num;
+            displayCard();
+        }
+
+        function cycleCard(direction) {
+            cardIndex += direction;
+            if (cardIndex < 0) cardIndex = allRecipes.length - 1;
+            if (cardIndex > allRecipes.length - 1) cardIndex = 0;
+
+            displayCard();
+            saveCardIndex();
+        }
+
+        function toggleList(listDiv, listButtonSpan) {
+            let toggledDiv = document.querySelector(listDiv);
+            let toggledButtonSpan = document.querySelector(listButtonSpan);
+            
+            if (toggledDiv.style.display != "block") {
+                toggledDiv.style.display = "block";
+                toggledButtonSpan.innerHTML = "Hide";
+            }
+            
+            else {
+                toggledDiv.style.display = "none";
+                toggledButtonSpan.innerHTML = "Show";
+            } 
+        }
+
+    </script>
+</head>
+<body onload="getUserRecipes(), getCardIndex(), setMultiplier(1)">
+
+    <header>
+        <div id="logo">
+            <img src="images/box_icon.png">
+            <h1>The Recipe Box</h1>
+        </div>
+    </header>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="recipe_input.html">Add Recipe</a>
+    </nav>
+
+    <main>
+        
+        <div id="recipeBox">
+            <button onclick="cycleCard(-1)" class="cardCycleButton"><span class="defaultText">&lt;</span><span class="hoverText">PREV</span></button>
+                <div id="cardsDiv">
+                    <!-- recipe cards go here -->
+                </div>
+            <button onclick="cycleCard(1)" class="cardCycleButton"><span class="defaultText">&gt;</span><span class="hoverText">NEXT</span></button>
+        </div>
+    
+    </main>
+
+    <div class="mobileFooter">
+        <button onclick="cycleCard(-1)">PREV</button>
+        <button onclick="cycleCard(1)">NEXT</button>
+    </div>
+
+</body>
+</html>

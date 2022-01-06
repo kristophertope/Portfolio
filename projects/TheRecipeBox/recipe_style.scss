@@ -1,0 +1,321 @@
+$lighterblue: rgb(148, 199, 216);
+$mediumblue: rgb(115, 165, 182);
+$darkerblue: rgb(34, 83, 99);
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: lightblue;
+    background-image: url("images/arabesque.png");
+    color: $lighterblue;
+}
+
+header {
+    //background-color: rgba(255,255,255,.25);
+    background-color: $lighterblue;
+    display: flex;
+    justify-content: center;
+    #logo {
+        display: flex;
+        align-items:center;
+        flex-direction: row;
+        height: 70px;
+        img {
+            width: 40px;
+            height: 40px;
+            margin: 10px;
+        }
+        h1 {
+            color: white;
+            font-size: 3em;
+        }
+    }
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    min-height: 55px;
+    a {
+        border-radius: 10px;
+        color: $mediumblue;
+        text-decoration: none;
+        font-size: larger;
+        font-weight: 700;
+        text-align: center;
+        width: 25%;
+        height: 100%;
+        padding: 4px;
+        transition: all .5s;
+
+        &:hover{
+            background-color: $mediumblue;
+            color: white;
+        }
+    }
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardCycleButton {
+    color: $lighterblue;
+    min-width: 35px;
+    max-width: 35px;
+    height: 200px;
+    background-color: white;
+    border: 5px solid $lighterblue;
+    font-size: xx-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .25s;
+
+    &:first-of-type {
+        margin-right: -5px;
+        border-radius: 10px 0 0 10px;
+        border-right-color: transparent;
+        z-index: 1;
+    }
+    &:last-of-type {
+        margin-left: -5px;
+        border-radius: 0 10px 10px 0;
+        border-left-color: transparent;
+        z-index: 1;
+    }
+    .hoverText {
+        display: none;
+    }
+
+    &:hover { 
+
+        .hoverText {
+            display: inline;
+            font-size: small;
+            vertical-align: middle;
+            font-weight: 800;
+            text-orientation: upright;
+            writing-mode: vertical-lr;
+        }
+        .defaultText{
+            display: none;
+        }
+    }
+}
+
+#recipeBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    max-width: 55%;
+}
+
+//card grid divs
+.nameDiv {grid-area: nameDiv;}
+.diffDiv {grid-area: diffDiv;}
+.servDiv {grid-area: servDiv;}
+.prepDiv {grid-area: prepDiv;}
+.cookDiv {grid-area: cookDiv;}
+.photoDiv {grid-area: photoDiv;}
+.sizeDiv {grid-area: sizeDiv}
+.ingredientsButtonDiv {grid-area: ingredientsButtonDiv;}
+.instructionsButtonDiv {grid-area: instructionsButtonDiv;}
+.ingredientsDiv {grid-area: ingredientsDiv;}
+.instructionsDiv {grid-area: instructionsDiv;}
+.mobileFooter {grid-area: mobileFooter;}
+
+.card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+        'nameDiv photoDiv'
+        'diffDiv photoDiv'
+        'servDiv photoDiv'
+        'prepDiv photoDiv'
+        'cookDiv photoDiv'
+        'sizeDiv sizeDiv'
+        'ingredientsButtonDiv instructionsButtonDiv'
+        'ingredientsDiv instructionsDiv'
+        ;
+    background-color: white;
+    border: 5px solid $lighterblue;
+    border-radius: 10px;
+    margin-top: 25px;
+    padding: 5px;
+    padding-bottom: 15px;
+    min-width: 700px;
+    max-width: 3000px;
+
+    button {
+        font-size: 1.5em;
+        justify-self: center;
+        background-color: $lighterblue;
+        border: 3px solid transparent;
+        border-radius: 5px;
+        color: white;
+        margin-top: 15px;
+        padding: 3px 8px;
+        transition: all .5s;
+        &:hover {
+            background-color: white;
+            border-color: $lighterblue;
+            color: $lighterblue;
+        }
+    }
+
+    .stats {
+        margin-left: 45px;
+        color: $mediumblue;
+    }
+
+    .ingredientsDiv, .instructionsDiv {
+        display: none;
+    }
+    .nameDiv {
+        text-align: center;
+    }
+    .photoDiv {
+        display: flex;
+        justify-content: center;
+        img {
+            border: 5px solid $lighterblue;
+            border-radius: 15px;
+            margin: 8px;
+            width: 300px;
+            opacity: 0.75;
+        }
+    }
+    .sizeSpan {
+        button {
+            font-size: 1em;
+            margin: 4px;
+            margin-left: 10px;
+            width: 44px;
+        }
+        
+    }
+    .sizeDiv {
+        display: none;
+        justify-content: space-around;
+        margin-top: 10px;
+        button {
+            font-size: 1em;
+            margin: 5px;
+        }
+    }
+    .ingredientsButtonDiv, .instructionsButtonDiv {
+        display: grid;
+    }
+
+    .ingredientsDiv {
+        margin-left: 20px;
+    }
+    .ingredientsDiv, .instructionsDiv {
+        color: $mediumblue;
+    }
+}
+
+.mobileFooter{
+    display: none;
+}
+
+
+
+@media only screen and (max-width: 800px) {
+
+    header {
+        #logo {
+            height: 50px;
+            img {
+                width: 25px;
+                height: 25px;
+                margin: 5px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+    }
+
+    nav {
+        min-height: 40px;
+        a {
+            width: 45%;
+        }
+    }
+
+    #recipeBox {
+        min-width: 100%;
+
+        .cardCycleButton {
+            display: none;
+        }
+        .card {
+            grid-template-areas:
+            'nameDiv nameDiv'
+            'photoDiv photoDiv'
+            'diffDiv servDiv'
+            'prepDiv cookDiv'
+            'sizeDiv sizeDiv'
+            'ingredientsButtonDiv ingredientsButtonDiv'
+            'ingredientsDiv ingredientsDiv'
+            'instructionsButtonDiv instructionsButtonDiv'
+            'instructionsDiv instructionsDiv'
+            ;
+            margin: 0 auto;
+            min-width: 95%;
+            border: none;
+            border-radius: 0;
+            border-top: 5px solid $lighterblue;
+
+            .photoDiv {
+                img {
+                    border: 5px solid $lighterblue;
+                    border-width: 5px 0 5px 0;
+                    border-radius: 0;
+                    margin: 8px;
+                    width: 103%;
+                    opacity: 1;
+                }
+            }
+            .sizeSpan {
+                display: none;
+            }
+            .sizeDiv {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                margin-top: 10px;
+                button {
+                    font-size: 1em;
+                    margin: 5px;
+                }
+            }
+        }
+
+    }
+
+.mobileFooter {
+
+    display: flex;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    
+    button {
+        background-color: $lighterblue;
+        color: white;
+        border-color: transparent;
+        padding: 10px 30px;
+        width: 50%;
+    }
+}
+
+}
