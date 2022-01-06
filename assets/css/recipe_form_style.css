@@ -1,0 +1,130 @@
+form {
+  background-color: white;
+  border-radius: 10px;
+  display: -ms-grid;
+  display: grid;
+  gap: 15px;
+  font-size: 25px;
+  margin: 30px;
+  padding: 20px;
+  overflow: scroll;
+}
+
+form input[type="text"], form input[type="number"] {
+  border: 2px solid #94c7d8;
+}
+
+form input[type="file"] button {
+  background-color: white;
+}
+
+form button {
+  font-size: 1.25em;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  background-color: #94c7d8;
+  border: 3px solid transparent;
+  border-radius: 5px;
+  color: white;
+  margin-top: 15px;
+  padding: 3px 8px;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+form button:hover {
+  background-color: white;
+  border-color: #94c7d8;
+  color: #94c7d8;
+}
+
+form label {
+  color: #73a5b6;
+  text-align: right;
+  margin-right: -8px;
+  width: auto;
+  white-space: nowrap;
+}
+
+form .ingRow {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 20% 30% 50%;
+      grid-template-columns: 20% 30% 50%;
+  height: 27px;
+  gap: 5px;
+  max-width: calc(100% - 10px);
+}
+
+form .addRow {
+  display: -ms-grid;
+  display: grid;
+}
+
+form .addRow button {
+  -ms-grid-column-align: right;
+      justify-self: right;
+  font-size: .75em;
+  margin-top: -5px;
+}
+
+form .instRow {
+  display: -ms-grid;
+  display: grid;
+  height: 27px;
+}
+
+form .buttonDiv {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-grid-column: span 2;
+      grid-column-start: span 2;
+}
+
+form .image-file {
+  margin-left: 10px;
+}
+
+@media only screen and (max-width: 800px) {
+  form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    margin: 0 auto;
+    padding: 0 auto;
+    padding-top: 15px;
+    background-color: rgba(224, 255, 255, 0.65);
+    min-width: 85%;
+  }
+  form .ingRow {
+    max-width: 95%;
+  }
+  form .addRow {
+    margin-top: -10px;
+  }
+  form input, form .instructionsTxt {
+    width: 95%;
+    height: 25px;
+  }
+  form .instDiv {
+    width: 100%;
+  }
+  form .buttonDiv {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  form .buttonDiv button {
+    margin-bottom: 5px;
+  }
+}
