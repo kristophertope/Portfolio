@@ -23,11 +23,7 @@
 				const one = "krist";
 				const three = "rtope";
 				const at = "@";
-				populateEmail("mailto:" + one + two + three + at + four + five);
-			}
-
-			function populateEmail(em) {
-				document.querySelector("#emailLink").href = em;
+				document.querySelector("#emailLink").href = "mailto:" + one + two + three + at + four + five;
 			}
 			
 		</script>
@@ -45,87 +41,86 @@
 
 			<div id="main">
 
+				<!-- Two -->
+				<section id="two">
+					<h1>Recent Work</h1>
+					<div class="row">
+						<article class="col-6 col-12-xsmall work-item">
+							<a href="images/fulls/01.jpg" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
+							<h3>Personal Finance Tracker</h3>
+							<p>Responsive web app built with Python's Django framework, Pandas, and Bokeh.  Deployed with PythonAnywhere.</p>
+							<a href="http://kristophertope.pythonanywhere.com/" class="button primary fit" target="_blank">Open Site</a>
+							<a href="https://github.com/kristophertope/PersonalFinanceTracker" class="button fit" target="_blank">GitHub</a>
+						</article>
+						<article class="col-6 col-12-xsmall work-item">
+							<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/02.jpg" alt="" /></a>
+							<h3>The Recipe Box</h3>
+							<p>Responsive web app built with JavaScript, HTML/CSS, SASS, and using LocalStorage for data persistence rather than a database, per the assignment's instructions. Recipe cards are generated dynamically, allowing for future database implementation.</p>
+							<a href="projects/TheRecipeBox/home.html" class="button primary fit" target="_blank">Open Site</a>
+							<a href="https://github.com/kristophertope/TheRecipeBox" class="button fit" target="_blank">GitHub</a>
+						</article>
+						<article class="col-6 col-12-xsmall work-item">
+							<a href="images/fulls/03.jpg" class="image fit thumb"><img src="images/thumbs/03.jpg" alt="" /></a>
+							<h3>Monte Hall Problem Simulator</h3>
+							<p>This desktop application allows users to test this well-known probability puzzle for themselves. Users can play individual rounds of "Let's Make a Deal", making switching decisions manually, or they can simulate 500 games at a time for definitive proof of the counterintuitive results. Developed with Python and a TKinter GUI.</p>
+							<div class="downloadButtons">
+								<a href="/assets/zip/The Monte Hall Problem MacOS.zip" download class="button primary icon solid fa-download" data-modal-target="#macModal">MacOS</a>
+								<a href="/assets/zip/The Monte Hall Problem Windows.zip" download class="button primary icon solid fa-download" data-modal-target="#windowsModal">Windows</a>
+							</div>
+							<a href="https://github.com/kristophertope/MonteHallProblem" class="button fit" target="_blank">GitHub</a>
+
+							<div id="macModal" class="modal">
+								<div class="modal-content">
+								  <button data-close-button class="close">&times;</button>
+								  <h2><br>NOTE: Before unzipping application, you must disable the MacOS Gate Keeper with this Terminal command: <code>sudo spctl --master-disable</code></h2><br>
+
+								  <h2>After unzipping, you may use the command <code>sudo spctl --master-enable</code> to turn Gate Keeper back on without affecting your ability to run the application.</h2>
+								</div>								 
+							</div>
+							<div id="windowsModal" class="modal">
+								<div class="modal-content">
+								  <button data-close-button class="close">&times;</button><br>
+								  <h2>NOTE: If Windows Defender prevents you from running this application, you can disable SmartScreen by right-clicking the app and selecting Properties > General tab > click "Unblock".</h2>
+								</div>								 
+							</div>
+							<div id="overlay"></div>
+						</article>
+						<article class="col-6 col-12-xsmall work-item">
+							<a href="images/fulls/04.jpg" class="image fit thumb"><img src="images/thumbs/04.jpg" alt="" /></a>
+							<h3>Quam neque phasellus</h3>
+							<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+						</article>
+						<article class="col-6 col-12-xsmall work-item">
+							<a href="images/fulls/05.jpg" class="image fit thumb"><img src="images/thumbs/05.jpg" alt="" /></a>
+							<h3>Nunc enim commodo aliquet</h3>
+							<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+						</article>
+						<article class="col-6 col-12-xsmall work-item">
+							<a href="images/fulls/06.jpg" class="image fit thumb"><img src="images/thumbs/06.jpg" alt="" /></a>
+							<h3>Risus ornare lacinia</h3>
+							<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+						</article>
+					</div>
+					<ul class="actions">
+						<li><a href="#three" class="button">Get in touch</a></li>
+					</ul>
+				</section>
+
 				<!-- One -->
 					<section id="one">
 						<header class="major">
-							<h2>Ipsum lorem dolor aliquam ante commodo<br />
-							magna sed accumsan arcu neque.</h2>
+							<h2>About Me</h2>
 						</header>
-						<p>Accumsan orci faucibus id eu lorem semper. Eu ac iaculis ac nunc nisi lorem vulputate lorem neque cubilia ac in adipiscing in curae lobortis tortor primis integer massa adipiscing id nisi accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque cubilia.</p>
-						<ul class="actions">
-							<li><a href="#" class="button">Learn More</a></li>
-						</ul>
-					</section>
-
-				<!-- Two -->
-					<section id="two">
-						<h1>Recent Work</h1>
-						<div class="row">
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/01.jpg" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
-								<h3>Personal Finance Tracker</h3>
-								<p>Responsive web app built with Python's Django framework, Pandas, and Bokeh.  Deployed with PythonAnywhere.</p>
-								<a href="http://kristophertope.pythonanywhere.com/" class="button primary fit" target="_blank">Open Site</a>
-								<a href="https://github.com/kristophertope/PersonalFinanceTracker" class="button fit" target="_blank">GitHub</a>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/02.jpg" alt="" /></a>
-								<h3>The Recipe Box</h3>
-								<p>Responsive web app built with JavaScript, HTML/CSS, SASS, and using LocalStorage for data persistence rather than a database, per the assignment's instructions. Recipe cards are generated dynamically, allowing for future database implementation.</p>
-								<a href="projects/TheRecipeBox/home.html" class="button primary fit" target="_blank">Open Site</a>
-								<a href="https://github.com/kristophertope/TheRecipeBox" class="button fit" target="_blank">GitHub</a>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/03.jpg" class="image fit thumb"><img src="images/thumbs/03.jpg" alt="" /></a>
-								<h3>Monte Hall Problem Simulator</h3>
-								<p>This desktop application allows users to test this well-known probability puzzle for themselves. Users can play individual rounds of "Let's Make a Deal", making switching decisions manually, or they can simulate 500 games at a time for definitive proof of the counterintuitive results. Developed with Python and a TKinter GUI.</p>
-								<div class="downloadButtons">
-									<a href="/assets/zip/The Monte Hall Problem MacOS.zip" download class="button primary icon solid fa-download" data-modal-target="#macModal">MacOS</a>
-									<a href="/assets/zip/The Monte Hall Problem Windows.zip" download class="button primary icon solid fa-download" data-modal-target="#windowsModal">Windows</a>
-								</div>
-								<a href="https://github.com/kristophertope/MonteHallProblem" class="button fit" target="_blank">GitHub</a>
-
-								<div id="macModal" class="modal">
-									<div class="modal-content">
-									  <button data-close-button class="close">&times;</button>
-									  <h2><br>NOTE: Before unzipping application, you must disable the MacOS Gate Keeper with this Terminal command: <code>sudo spctl --master-disable</code></h2><br>
-
-									  <h2>After unzipping, you may use the command <code>sudo spctl --master-enable</code> to turn Gate Keeper back on without affecting your ability to run the application.</h2>
-									</div>								 
-								</div>
-								<div id="windowsModal" class="modal">
-									<div class="modal-content">
-									  <button data-close-button class="close">&times;</button><br>
-									  <h2>NOTE: If Windows Defender prevents you from running this application, you can disable SmartScreen by right-clicking the app and selecting Properties > General tab > click "Unblock".</h2>
-									</div>								 
-								</div>
-								<div id="overlay"></div>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/04.jpg" class="image fit thumb"><img src="images/thumbs/04.jpg" alt="" /></a>
-								<h3>Quam neque phasellus</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/05.jpg" class="image fit thumb"><img src="images/thumbs/05.jpg" alt="" /></a>
-								<h3>Nunc enim commodo aliquet</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/06.jpg" class="image fit thumb"><img src="images/thumbs/06.jpg" alt="" /></a>
-								<h3>Risus ornare lacinia</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
-							</article>
-						</div>
-						<ul class="actions">
-							<li><a href="#" class="button">Full Portfolio</a></li>
-						</ul>
+						
+						<p>I love the creative process and have a passion for building things -- both digital and physical.  I left a successful management career to return to school in order to find and pursue my passions.  I finished school with a 3.92 GPA and a CIS Degree, a Computer Languages Diploma, and certificates for Java, Python, and SQL.</p> 
+						
+						<p>I have experience with JavaScript, Python, Java, and C#, though I am a quick learner who loves to pick up new skills as needed.</p>
+						
 					</section>
 
 				<!-- Three -->
 					<section id="three">
 						<h2>Get In Touch</h2>
-						<h4>Form</h4>
 						<form method="post" action="https://formsubmit.co/843ebf095a7b8bbee9097d4c50223a51" method="POST">
 							<div class="row gtr-uniform gtr-50">
 								<div class="col-6 col-12-xsmall">
